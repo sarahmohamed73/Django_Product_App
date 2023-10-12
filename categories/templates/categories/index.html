@@ -1,0 +1,33 @@
+{% extends 'amazon/layouts/base.html' %}
+{% load static %}
+{% block title %} Products  {% endblock %}
+{% block body %}
+  <!-- Start Body -->
+  <div class="container">
+    <!-- <h1 class="my-5">Here Is Your Categories</h1> -->
+    <table class="table my-5" id="dataTable" width="100%" cellspacing="0">
+      <tr style="background-color: #5585b5; color: white;"> 
+        <th class="py-3">ID</th>  
+        <th class="py-3">Name</th> 
+        <th class="py-3">Description</th>
+        <th class="py-3">Image</th>
+        <th class="py-3">Show</th>
+      </tr>
+
+      {% for category in categories %}
+        <tr>
+          <td>{{category.id}}</td>
+          <td>{{category.name}}</td>
+          <td>{{category.description}}</td>
+          <td>
+            <img src="{{category.get_image_url}}" width="100"> 
+          </td>
+          <td>
+            <a href="{% url 'categories.details' category.id %}" class="btn text-white" style="background-color: #5585b5;">Show</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <!-- End Body -->
+{% endblock %}

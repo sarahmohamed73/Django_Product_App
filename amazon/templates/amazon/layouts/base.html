@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'amazon/css/index.css'%}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.css'%}">
+    
+  </head>
+  <body>
+    <!-- Start Navbar -->
+    <nav class="navbar navbar-expand-lg" style="background-color: #5585b5">
+      <div class="container">
+        <a class="navbar-brand text-white" href="#">Amazon</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'amazon.index' %}">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'categories.index' %}">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'amazon.contactus' %}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'amazon.aboutus' %}">About</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search" action="{% url 'amazon.search' %}" method="GET">
+            <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light " type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- {{form.data.search}} -->
+    <!-- End Navbar -->
+    <!-- Start Body -->
+    <div>
+      {% block body %}
+      {% endblock %}
+    </div>
+    <!-- End Body -->
+    <!-- Start Footer -->
+    <div class='container-fluid text-light p-4' style="background-color: #5585b5">
+      <div class='row px-5 align-items-center '>
+        <div class='col-md-4 col-12 text-center my-3'>
+          <h4 class='text-uppercase mb-3'>Get In Touch</h4>
+          <p class='m-0'>
+            <i class="fa-solid fa-envelope"></i> sarah@gmail.com
+          </p>
+          <p class='m-0'>
+            <i class="fa-solid fa-address-card"></i> 0101122334455
+          </p>
+        </div>
+        <div class='col-md-4 col-12 my-3 text-center '>
+          <button class="contact btn btn-outline-light text-light">CONTACT ME</button>
+        </div>
+        <div class='col-md-4 col-12 my-3 text-center'>
+          <p class='mb-3'>
+            <i class="fa-brands fa-facebook-f me-4 "></i>
+            <i class="fa-brands fa-linkedin-in me-4"></i>
+            <i class="fa-brands fa-twitter"></i>
+          </p>
+          <p class='m-0'>Copyright 	&copy; 2023 KR</p>
+        </div>
+      </div>
+    </div>
+    <!-- End Footer -->
+    <script src="{% static 'bootstrap/js/bootstrap.js'%}"></script>
+  </body>
+</html>

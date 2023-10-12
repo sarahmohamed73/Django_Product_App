@@ -1,0 +1,17 @@
+{% extends 'amazon/layouts/base.html' %}
+{% load static %}
+{% block title %} Add Products  {% endblock %}
+{% block body %}
+  <!-- Start Body -->
+  <div class="container ">
+    <h3 class="py-3 m-0 mt-3">Edit {{product.name}}</h3>
+    <form class="pb-5" method="post"  enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit" class="btn text-white mt-4" style="background-color: #5585b5;">Submit</button>
+    </form>
+  </div>
+
+  <script src="{% static  'amazon/js/script.js' %}"></script>
+  <!-- End Body -->
+{% endblock %}
