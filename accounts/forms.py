@@ -4,11 +4,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
 
-class UserModelForm():
-  class meta:
-    model = User
-    fields = '__all__'
-
 class CustomizedUserCreationForm(UserCreationForm):
   first_name = forms.CharField(label="First Name", required=True)
   last_name = forms.CharField(label="Last Name", required=True)

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'amazon.apps.AmazonConfig',
     'categories.apps.CategoriesConfig',
     'django_cleanup.apps.CleanupConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

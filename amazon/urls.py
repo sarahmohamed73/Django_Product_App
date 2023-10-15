@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from amazon.views import index, details, delete, search, contact_us, about_us, createViaForm, editViaForm
 
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
   path('aboutus/', about_us, name='amazon.aboutus'),
   path('forms/create', createViaForm, name='amazon.createform'),
   path('<int:id>/forms/edit', editViaForm, name='amazon.editform'),
+  path('api/', include('amazon.api.urls'))
 ]
