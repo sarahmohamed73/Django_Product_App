@@ -13,8 +13,10 @@
             <h5 class="card-title">{{product.name}}</h5>
             <div class="d-flex justify-content-between ">
               <a href="{{product.get_detail_url}}" style="color: #5585b5;"><i class="fa-solid fa-eye"></i></a>
-              <a href="{% url 'amazon.editform' product.id%}" style="color: #5585b5;"><i class="fa-regular fa-pen-to-square"></i></a>
-              <a href="{{product.get_delete_url}}" class="text-danger"><i class="fa-solid fa-trash"></i></a>
+              {% if product.owner == user.username %}
+                <a href="{% url 'amazon.editform' product.id%}" style="color: #5585b5;"><i class="fa-regular fa-pen-to-square"></i></a>
+                <a href="{{product.get_delete_url}}" class="text-danger"><i class="fa-solid fa-trash"></i></a>
+              {% endif %}
             </div>
           </div>
         </div>

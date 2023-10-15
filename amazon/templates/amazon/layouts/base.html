@@ -37,6 +37,31 @@
             <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-light " type="submit">Search</button>
           </form>
+          <ul class="navbar-nav ms-4 mb-2 mb-lg-0">
+            {% if user.id %}
+            <div class="dropdown">
+              <button class="btn btn-outline-light  dropdown-toggle border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{user.first_name}} {{user.last_name}}  
+                <img src="{% static 'accounts/images/profile.png' %}" class="ms-1" width="30" height="30"/>
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="{% url 'accounts.profile' %}">Porfile</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                </li>
+              </ul>
+            </div>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'login' %}">Log In</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'accounts.create' %}">Register</a>
+            </li>
+            {% endif %}
+          </ul>
         </div>
       </div>
     </nav>
@@ -74,6 +99,6 @@
       </div>
     </div>
     <!-- End Footer -->
-    <script src="{% static 'bootstrap/js/bootstrap.js'%}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.js'%}"></script>
   </body>
 </html>

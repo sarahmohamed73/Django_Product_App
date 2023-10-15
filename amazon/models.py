@@ -1,6 +1,7 @@
 from django.db import models
 from django.shortcuts import reverse
 from categories.models import Category
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Product(models.Model):
@@ -9,6 +10,8 @@ class Product(models.Model):
   price = models.FloatField()
   stock = models.IntegerField()
   image = models.ImageField(upload_to='amazon/images/', blank=True, null=True)
+  owner = models.ForeignKey(User, null=True, blank=True,
+                              on_delete=models.CASCADE, related_name='owner')
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
   category = models.ForeignKey(Category, null=True, blank=True,
